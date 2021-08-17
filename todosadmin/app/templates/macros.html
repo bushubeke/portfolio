@@ -1,0 +1,38 @@
+{% macro render_field_with_errors(field) %}
+<div >
+    {{ field.label(class_="form-label") }} 
+  </br>
+    {{ field(**kwargs) }}
+    {% if field.errors %}
+    
+       
+      {% for error in field.errors %}
+        {{ error }}
+      {% endfor %}
+     
+    {% endif %}
+  </div>
+{% endmacro %}
+
+
+<!-- {% set count = 1 %}
+{% for i in p %}
+  {{ count }}
+  {% set count = count + 1 %}
+{% endfor %} -->
+
+{% macro render_field_with_errorsT(field) %}
+<div class="relative w-full mb-3">
+  
+  {{ field.label(class_="block text-gray-700 text-xl p-3 m-3 mb-2") }} 
+  {{ field(**kwargs) }}
+  {% if field.errors %}
+  
+     
+    {% for error in field.errors %}
+      {{ error }}
+    {% endfor %}
+   
+  {% endif %}
+</div>
+{% endmacro %}

@@ -1,0 +1,353 @@
+.content {
+    /* min-width: 300px !important; */
+   
+    border-radius: 10px;
+    border:1px solid black;
+    padding-bottom:50px;
+    background-color: aliceblue;    
+}
+
+.button_options{
+  /* float: right; */
+  margin:right;
+  border-radius: 5px;
+  color:black;
+  background-color: lightgrey;
+
+}
+
+.button_options:hover{
+  color:white;  
+  background-color:lightgreen;
+}
+.add_task{
+  float:right;
+}
+.data_row {
+  border-top:1px solid darkgray;
+  border-bottom:1px solid darkgray;
+  padding-top:0.5px;
+  padding-bottom: 0.5px;
+  padding-right: 10px;
+  overflow:hidden;
+  
+}
+
+.data_row p,button {
+  margin:5px;
+
+}
+.main_content{
+  
+  background-color:aliceblue;
+  margin-top: 1%;
+  padding:3px;
+  overflow:hidden;
+
+} 
+.add_new_content{
+  background-color:aliceblue;
+  margin-top: 1%;
+  padding:3px;
+  overflow:hidden;
+
+}
+/* ##################################################################################### */
+/* please note this breaking points are taken from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_mq_breakpoints */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .content {
+    width: 90%;
+    
+    margin-left:5%; 
+    margin-top: 10%;
+  }
+  li a {
+    font-weight: bold;
+    font-size:x-small;
+  }
+  .main_content{
+  
+    width:90%;
+    margin-left:2.5%;
+    
+    
+  
+    
+  }
+  .add_new_content{
+
+    width:90%;
+    margin-left:2.5%;
+    
+  }
+  
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .content {
+    width: 90%;
+    margin-left:5%; 
+    margin-top: 10%;
+  }
+  li a {
+    font-weight: bold;
+    font-size:large;
+  }
+  .main_content{
+    width:50%;
+    margin-left: 25%;
+   
+  }
+  .add_new_content{
+    width:50%;
+    margin-left: 25%;
+    
+  }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .content {
+    width: 70%;
+    margin-left:15%; 
+    margin-top: 10%;
+  }
+  li a {
+    font-weight: bold;
+    font-size:large;
+  }  
+  .main_content{
+    width:50%;
+    margin-left: 25%;
+      
+  }
+  .add_new_content{
+    width:50%;
+    margin-left: 25%;
+    
+  }
+
+
+  }
+ 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .content {
+    width: 40%;
+    margin-left:30%; 
+    margin-top: 5%;
+  }
+  li a {
+    font-weight: bold;
+    font-size:large;
+  }
+  .main_content{
+    
+    width:50%;
+    margin-left: 25%;
+    
+    
+  }
+  .add_new_content{
+    width:50%;
+    margin-left: 25%;
+    
+  }
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .content {
+    width: 25%;
+    margin-left:37.5%; 
+    margin-top: 5%;
+  }
+  li a {
+    font-weight: bold;
+    font-size:large;
+  }
+  .main_content{
+    
+    width:50%;
+    margin-left: 25%;
+    
+    
+  }
+  .add_new_content{
+    width:50%;
+    margin-left: 25%;
+    
+  }
+
+}
+/* ######################################################################################## */
+/* this is also taken from w3c */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  position: relative;
+  right:0;
+}
+
+.dropdown-content a:hover {
+  background-color: black;
+  color:white;  
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* ######################################################################################### */
+/* input [type=text],input [type=password] */
+.form_input
+{
+    width: 100%;
+    height: 25px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+  input[type=submit] {
+    width: 100%;
+    color:black;
+    background-color: lightgrey;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size:large;
+    font-weight: bold;
+  }
+  input[type=submit]:hover {
+    color:white;  
+    background-color:lightgreen;
+  }
+ .cancel_update{
+  width: 100%;
+  color:black;
+  background-color: lightgrey;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size:large;
+  font-weight: bold;
+ }
+ .cancel_update:hover{
+ color:white;  
+ background-color:lightgreen;
+ }
+  form {
+    
+    padding:15px 15px 15px 15px;
+    margin:15px 15px 15px 15px;  
+
+    
+  }
+  .select_input{
+    width: 100%;
+    height: 25px;
+    border-radius: 4px;
+    
+  }
+/* this navbar styling below is also taken from css w3c website
+slightly modified 
+################################################### */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: lightgray;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+
+}
+
+li a:hover {
+  background-color:black;
+  color: white;
+}
+
+span {
+  float: left;
+  width: 0.7em;
+  font-size: 400%;
+  font-family: algerian, courier;
+  line-height: 80%;
+}
+
+/* ############################################################## */
+
+img {
+  margin-top:1%;
+  margin-left: 7.5%;
+  width: 85%;
+  height: 300px;
+  
+}
+
+.float-right{
+  background-color:aliceblue;
+  float:right;
+  padding-right:auto;
+}
+/* ################################################################## */
+.display_none {
+  display: none;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}

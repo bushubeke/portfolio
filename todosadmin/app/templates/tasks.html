@@ -1,0 +1,339 @@
+{% extends 'base.html' %}
+{% from "macros.html" import render_field_with_errors %}
+{%block title%}
+<title>{{title}}</title>
+{%endblock%}
+
+{% block body %}
+  
+<style>
+    .display_none {
+        display: none;
+    }
+    .modal {
+      transition: opacity 0.25s ease;
+    }
+    body.modal-active {
+      overflow-x: hidden;
+      overflow-y: visible !important;
+    }
+</style>
+<script>
+ 
+        document.addEventListener("DOMContentLoaded", function(){
+  
+//##############################################################################33
+  //this functions adds event listener on the add new task button at the button which
+  //toggles display state of the input form at the bottom of the tasks view
+
+  let x=document.getElementById("form_show_status");
+  var y=document.getElementById("new_task_form");
+
+  function toggle_display(){
+    
+    console.log(y.classList.contains("display_none"))
+    //alert(y.classList.contains("display_none"))
+      
+     if (y.classList.contains("display_none")){
+            y.classList.remove("display_none");
+       }
+       else{
+        y.classList.add("display_none")
+       }
+
+     }
+
+
+   x.addEventListener("click",toggle_display)
+
+ //#################################################################################################
+
+
+
+ //#################################################################################################
+// the functiosns below are for update form button operations
+ //#################################################################################################
+//  var x = document.getElementById("item1")
+//   text=x.nextSibling.nextSibling.innerHTML;
+
+
+// elementsArray.forEach(function(elem) {
+//     elem.addEventListener("input", function() {
+//         //this function does stuff
+//     });
+// });
+
+
+
+var tasks_node=document.getElementsByClassName("tasks_tr")
+
+
+// function toggleModal(modalID){
+//                   document.getElementById(modalID).classList.toggle("hidden");
+//                   document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+//                   document.getElementById(modalID).classList.toggle("flex");
+//                   document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+//                 }
+
+for( let i=0;i<tasks_node.length; i++ ) {
+       // console.log(tasks_node[i].children[5].children[2])
+       //console.log(tasks_node[i].children[5].children[1].children[0].children[0].children[2].children[0])
+        //##############################################################
+        // edit button modal
+        //################################################################
+       
+        tasks_node[i].children[5].children[0].addEventListener('click',function () {
+          tasks_node[i].children[5].children[1].classList.toggle("hidden");
+          tasks_node[i].children[5].children[1].classList.toggle("flex");
+          
+          tasks_node[i].children[5].children[2].classList.toggle("hidden");
+          tasks_node[i].children[5].children[2].classList.toggle("flex");
+
+
+          
+
+          
+        })
+
+        
+
+         //#############################################################
+         
+        //  tasks_node[i].children[5].children[1].children[0]
+    
+        tasks_node[i].children[5].children[1].children[0].children[0].children[2].children[0].addEventListener("click", function(){
+          tasks_node[i].children[5].children[1].classList.toggle("hidden");
+          tasks_node[i].children[5].children[2].classList.toggle("hidden");
+          tasks_node[i].children[5].children[1].classList.toggle("flex");
+          tasks_node[i].children[5].children[2].classList.toggle("flex");
+        })
+        
+        //##############################################################
+        // update  button button in table event listners
+        //################################################################       
+      
+        //##############################################################
+        // Delete  button button in table event listners
+        //################################################################ 
+        tasks_node[i].children[6].addEventListener('click',function(){
+         tasks_node[i].children[6].children[1].submit()
+
+        })
+        //###########################################################
+             
+          
+        //#############################################################
+    } 
+
+ // #####################
+              // document.onkeydown = function(evt) {
+              //   for(let i=0;i<tasks_node.length; i++){
+              //                       evt = evt || window.event
+              //                       var isEscape = false
+              //                       if ("key" in evt) {
+              //                       isEscape = (evt.key === "Escape" || evt.key === "Esc")
+              //                             if (tasks_node[i].children[5].children[1].classList.contains('modal-active')){
+                                            
+              //                             }else{
+              //                               tasks_node[i].children[5].children[1].classList.add("hidden");
+              //                             tasks_node[i].children[5].children[2].classList.add("hidden");
+              //                             tasks_node[i].children[5].children[1].classList.add("flex");
+              //                             tasks_node[i].children[5].children[2].classList.add("flex");
+              //                               }
+              //                       } 
+              //                     };
+                  
+
+              //                   }
+    // ####################
+ 
+    document.getElementById("add_new_task").addEventListener("click",function(){
+            console.log("it has run")
+            document.getElementById("new_task").submit()
+
+        })
+
+
+ //#################################################################################################
+// the functiosns below are for update form button operations
+ //#################################################################################################
+
+
+
+//#################################################################################################
+
+    }
+    );
+   
+$(document).ready(function(){
+  $("#tb_search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tb_content tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+</script>
+<section class="w-full sm:w-full md:w-8/12 lg:w-11/12 xl:w-9/12 p-1 xl:p-5  mx-auto min-h-full  z-40 align-middle flex flex-wrap content-start">
+
+    
+{% if tasks %}
+<!-- here -->
+<div class="overflow-x-auto w-full">
+  <input id="tb_search" class="rounded-lg m-3 py-1 float-right  text-gray-700 leading-tight focus:outline-none" id="search" type="text" placeholder="Search">
+</div>
+<div class='overflow-x-auto w-full rounded-t-lg'>
+  
+  <table class='mx-auto w-full whitespace-nowrap  bg-white divide-y divide-gray-300 '>
+      <thead class="bg-gray-900 ">
+          <tr class="text-white text-left">
+              <th class="font-semibold text-sm uppercase px-6 py-4">  Task </th>
+              <th class="font-semibold text-sm uppercase px-6 py-4">   Name </th>
+              <th class="font-semibold text-sm uppercase px-6 py-4 text-center"> Description </th>
+              <th class="font-semibold text-sm uppercase px-6 py-4 text-center"> Due Date </th>
+              <th class="font-semibold text-sm uppercase px-6 py-4 text-center"> status </th>
+              <th class="font-semibold text-sm uppercase px-6 py-4"> </th>
+              <th class="font-semibold text-sm uppercase px-6 py-4"> </th>
+          </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200" id="tb_content">
+
+<!-- first section end -->
+{% for x,y in tasks %}
+        <!-- sample row -->
+        <tr class="tasks_tr text-sm">
+          <th class="border-t-0 px-6 align-middle border-l-0 border-r-0  whitespace-nowrap p-4 text-left">
+            {{loop.index }}
+          </th>
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0  whitespace-nowrap p-4">
+            {{ x.name }}
+          </td>
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0  word-break  p-4">
+            {{ x.description }}
+          </td>
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0  whitespace-nowrap p-4">
+            
+            {{x.date}}
+          </td>
+          {% if x.status == "ongoing" %}
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0  text-red-500 whitespace-nowrap p-4">
+            {{x.status}}
+          </td>
+          {% else %}
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0  text-green-500 whitespace-nowrap p-4">
+            {{x.status}}
+           
+          </td>
+          {%endif %}
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs text-green-500 whitespace-nowrap p-4">
+          
+              <i class="fa fa-edit fa-2x"  ></i>
+        
+              <!-- ###################### modal template -->
+              <div class="hidden text-black overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none  h-full w-full  align-middle items-center focus:outline-none justify-center content-center" >
+                <div class="w-auto  mx-auto w-11/12 sm:w-3/5 lg:w-2/5">
+                  <!--content-->
+                  <div class="border-0 rounded-lg shadow-lg relative w-full bg-white outline-none focus:outline-none">
+                    <!--header-->
+                    <div class="flex items-start justify-between bg-gray-300 p-1 px-7 border-b border-solid border-blueGray-200 rounded-t">
+                      <h3 class="text-xl font-semibold">
+                        Edit Task {{loop.index}}
+                      </h3>
+                    </div>
+                    <!--body-->
+                    <div class="relative p-7 min-w-0 break-words w-full shadow-lg bg-gray-300 border-0 " >
+                    
+                    <form  action="{{ url_for('front.update_task') }}" method="POST" name="tasks_formnot" >
+                        
+                      {{ y.id}}
+                      {{ render_field_with_errors(y.name,class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full") }}
+                      {{ render_field_with_errors(y.description,class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full") }}
+                      {{ render_field_with_errors(y.date,class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full") }}
+                      {{ render_field_with_errors(y.status,class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full") }}
+                    </br>
+                      <input type="submit" value="Update" class="bg-gray-900 z-20 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full">
+                      
+                    </form>
+                    </div>
+                    <!--footer-->
+                    <div class="flex items-center justify-end p-2 border-t border-solid border-blueGray-200 bg-gray-300">
+                      <button class="text-red-500 background-transparent font-bold uppercase px-2 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" >
+                        Close
+                      </button>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="hidden  opacity-75 fixed  inset-0 z-40 bg-black"></div>
+              
+            
+              <!-- #######################end of modal template -->
+          </td>
+        
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs text-red-500 whitespace-nowrap p-4">
+          
+            <i class="fa fa-trash fa-2x"></i> 
+            <form   action="{{ url_for('front.delete_task') }}" method="POST"  hidden>
+              <input name="id" required="" type="hidden" value={{x.id}}>
+             
+              <input type="submit" value="delete">
+          </form>
+           
+          </td>
+         
+          
+        
+        </tr>
+        
+
+        <!-- sample row ends here -->
+    
+    
+
+
+   
+   
+  
+  
+  {% endfor %}
+</tbody>
+</table>
+</div>
+  {% endif %}
+
+
+<div class="block w-full p-1 mx-auto mb-3 shadow-lg rounded-lg bg-gray-300 "  >
+            
+    <button id="form_show_status" class="bg-gray-900 float-right text-white active:bg-gray-700 text-sm font-bold uppercase px-2 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 block">Add</button>
+          
+            <div id="new_task_form" class='edit_view display_none p-10' >
+            <form id="new_task" action="{{ url_for('front.tasks') }}" method="POST" name="tasks_form"  >
+                {{ tasks_form.hidden_tag() }}
+                {{tasks_form.csrf_token }}
+                {{ render_field_with_errors(tasks_form.name,class="border-0 px-3  py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full") }}
+                {{ render_field_with_errors(tasks_form.description,class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full") }}
+                {{ render_field_with_errors(tasks_form.date,class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full") }}
+                {{ render_field_with_errors(tasks_form.status,class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full") }}
+                <div class="text-center mt-6">
+                  <button
+                    class="bg-gray-900 z-20 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
+                    type="button"
+                    style="transition: all 0.15s ease 0s;"
+                    id="add_new_task"
+                  >
+                    Add task
+                  </button>
+                </div>
+            </form>
+            </div>
+</div>  
+         
+
+
+
+</section>
+{%endblock%}
+
+
