@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath app todosadmin.production
+web: gunicorn production:app

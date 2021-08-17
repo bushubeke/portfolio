@@ -1,13 +1,13 @@
 import os
-from flask_migrate import Migrate
-
-from app import create_prod_app,db
-basde=os.path.abspath(os.path.dirname(__file__))
 
 
-MIGRATION_DIR = os.path.join(basde, 'prodmigrations')
+from todosadmin.app import create_prod_app,db
+# basde=os.path.abspath(os.path.dirname(__file__))
+
+
+# MIGRATION_DIR = os.path.join(basde, 'prodmigrations')
 app=create_prod_app()
-migrate_prod = Migrate(app, db, directory=MIGRATION_DIR)
+# migrate_prod = Migrate(app, db, directory=MIGRATION_DIR)
     
 
 if __name__ == "__main__":
