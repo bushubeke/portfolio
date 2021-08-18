@@ -258,6 +258,7 @@ def delete_task():
 # this is about page route
 #######################################################################
 @front.route("/profile",methods=["GET"])
+@login_required
 def profile_page():
         title="Profile"
     
