@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{%block title%}
+<title>{{title}}</title>
+{%endblock%}
+
+{% block body %}
+<script  src="{{ url_for('static', filename='js/marked.js')}}" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    //   ##################################
+    // start of DOM content loaded
+        //taken from youtube freecode camp youtube tutorial
+   
+       
+
+          marked.setOptions({
+            breaks: true,
+          });
+          let markdown_input=document.querySelectorAll("#editor")
+          //console.log(markdown_input[0])
+          markdown_input[0].addEventListener("input",function(event){
+              //console.log(event.target.value)
+              document.querySelector("#preview").innerHTML=marked(event.target.value);
+          },false)
+
+
+
+          document.querySelector("#editor").value="![freeCodeCamp Logo](https://cdn.freecodecamp.org/testable-projects-fcc/images/fcc_secondary.svg)"
+  
+
+
+
+          
+    // #######################################
+    // end of Dom Content loaded 
+      
+
+
+    });
+
+    
+    
+</script>
+
+
+<section class="w-full   p-4 h-full  grid grid-cols-6 gap-2 z-40 ">
+   <div class="border-black rounded-lg border-2 pl-1 pr-1 col-span-6 sm:col-span-3 ">
+    <h1 class="font-bold ">MarkDown Previewer Input Text Area</h1>
+    <textarea id="editor" class="  form-textarea p-2 block w-full" rows="16" placeholder="Enter markdown content here"></textarea>
+   </div>
+   <div id='preview'  class="border-black p-4 rounded-lg border-2 overflow-y-auto bg-gray-300 col-span-6 sm:col-span-3">
+   
+   </div> 
+  
+</section>
+
+   
+   
+{%endblock%}
+
+
+
+
+
+
+

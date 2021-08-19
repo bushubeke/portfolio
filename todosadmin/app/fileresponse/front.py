@@ -54,30 +54,31 @@ def login():
     #print(dir(g))
     title="LOGIN PAGE"
     login_form=LoginForm()
-   
-    if request.method == "GET":
-        try:
-           
-            return render_template('login.html',login_form=login_form)
-        except TemplateNotFound:
-            abort(404)
+    if not current_user.is_authenticated:
+        if request.method == "GET":
+            try:
+            
+                return render_template('login.html',login_form=login_form)
+            except TemplateNotFound:
+                abort(404)
 
-    elif request.method == "POST":
-        if login_form.validate():
-            user=User.query.filter_by(email=login_form.data['email']).first()
-            #the if condtional below also verifys password
-            
-            if user and pbkdf2_sha512.verify(login_form.data['password'],user.password):
-                login_user(user,remember=True)
+        elif request.method == "POST":
+            if login_form.validate():
+                user=User.query.filter_by(email=login_form.data['email']).first()
+                #the if condtional below also verifys password
                 
-                print("logged in sucessfully")
-              
-                return render_template('index.html',title="Homepage")
-            
+                if user and pbkdf2_sha512.verify(login_form.data['password'],user.password):
+                    login_user(user,remember=True)
+                    
+                    print("logged in sucessfully")
+                
+                    return render_template('index.html',title="Homepage")
+                
+                return redirect(url_for('front.login'))
             return redirect(url_for('front.login'))
-        return redirect(url_for('front.login'))
-    else:
-        return render_template('index.html',title="Homepage")  
+        else:
+            return render_template('index.html',title="Homepage")
+    return redirect(url_for('front.index')) 
          
 ######################################################################
 # this route will logout users if logged in
@@ -368,7 +369,15 @@ def admin_logout():
         return redirect(url_for('front.admin_login'))
     
 
+######################################################################
+# this is Markdown previewr route using markdown previewr
+#######################################################################
 
+@front.route('/markdown')
+def markdown():
+      title="Markdown Previewer"
+      return render_template('marked.html',title=title)
+    
 ######################################################################
 # this is tails test page page route
 #######################################################################
