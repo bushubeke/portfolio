@@ -30,144 +30,78 @@
 <script  src="{{ url_for('static', filename='js/bootstrap.min.js') }}" crossorigin="anonymous"></script>   
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/admin.css') }}">
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/tailwind.css') }}">
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/fontawesome.min.css') }}">
-
-<script  src="{{ url_for('static', filename='js/a99af8ed2c.js')}}" crossorigin="anonymous"></script>
+<!-- <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/fontawesome.min.css') }}"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script  src="{{ url_for('static', filename='js/chart.js')}}" crossorigin="anonymous"></script>
 <script  src="{{ url_for('static', filename='js/main.js')}}" crossorigin="anonymous"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function(){
-    // start of dom loaded
-
-  // user task pagination click functions
-  //var utp=document.getElementsByClassName('.user-task-pagination')
   var utp=document.querySelectorAll(".accordion-body")
-  
     for (let i=0;i<utp.length;i++){
       try {
-        //console.log(utp[i])
-        var acitems=utp[i].children[2].children[1].children
-       
+        var acitems=utp[i].children[2].children[1].children  
         for (let j=0;j<acitems.length;j++){
           acitems[j].addEventListener("click",function(){
-            
             $("#"+utp[i].children[2].children[0].innerHTML).hide() 
-            
             $("#"+this.classList.value).toggle()
             utp[i].children[2].children[0].innerHTML=this.classList.value
-          
-          })
-         
-        
+          })        
         }
       } catch (error) {
-        
       }
-      
       try {
         let last_ind=utp[i].children[2].children[1].children
-        //console.log(last_ind[last_ind.length-1])
         last_ind[last_ind.length-1].click()
-      } catch (error) {
-        
+      } catch (error) { 
       }
-      
     }
   // ##################################
   // end of user pagination functions
 // ##############################
 //start of user list pagination function
 //##################################
-    var uvp=$("#ulp-section").children()
-    //var uvp=document.querySelectorAll("#ulp-section")
-    var ult=$("#user_list_tracker")
-      //console.log(uvp[uvp.length-1])
-        for (let i=0;i<uvp.length;i++){
-          
+var uvp=$("#ulp-section").children()
+var ult=$("#user_list_tracker")
+  for (let i=0;i<uvp.length;i++){          
         try {
-          
-       
-
-          uvp[i].addEventListener("click",function(){
-            //console.log(ult.html())  
+            uvp[i].addEventListener("click",function(){  
             $("#"+ult.html()).hide()
             $("#"+this.className).toggle()
             ult.html(this.className)
-            //console.log(ult.html())
-           
-
-
-          })
-
+             })
         } catch (error) {
-          
         }  
         }
 // ###############################3
 // setting user list on last page
 var lup=document.querySelectorAll("#ulp-section")[0].children
 lup[lup.length-1].click() 
-
-
-// ##################33333
-   
-
-  // ##############################
+// ##############################
 //end of user list pagination function
 //##################################
-  
-
 // ###################################
 // start of user delete function
 // ########################################
-
-      var delete_buttons=document.querySelectorAll(".user_delete");
-      
+      var delete_buttons=document.querySelectorAll(".user_delete");      
         for (k=0;k<delete_buttons.length;k++){
           delete_buttons[k].addEventListener("click",function(){
             this.children[0].submit()
             console.log(this.children)
           })
         }
-        
-
-
-
 // ##################################
 // end of user delete funciton
 // ##################################3
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ##############################################33
 
     //end of dom loaded
-
-
-
-
-  });
- 
+  }); 
 </script>
 <!-- ended here -->
 <body class="pl-1 class=" overflow-y-auto"">
-   
     <main class="h-full w-full">
-        
             <nav class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto m-0 md:overflow-hidden shadow-xl bg-white items-center justify-between relative md:w-64 z-10 py-1 px-2">
               <div class="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
                 <button class="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent" type="button" onclick="toggleNavbar('example-collapse-sidebar')">
@@ -177,23 +111,13 @@ lup[lup.length-1].click()
                 </a>
                 <ul class="md:hidden items-center flex flex-wrap list-none">
                   <li class="inline-block relative">
-                    <a class="text-blueGray-500 block py-1 px-3" href="#" onclick="openDropdown(event,'notification-dropdown')"><i class="fa fa-bell"></i></a>
+                    <a class="text-blueGray-500 block py-1 px-3" href="#" onclick="openDropdown(event,'notification-dropdown')"><i class="fa fa-bars"></i></a>
                     <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1" style="min-width: 12rem;" id="notification-dropdown">
-                      <a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Action</a><a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Another action</a><a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Something else here</a>
-                      <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
-                      <a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Seprated link</a>
+                      <a href="/admin/logout" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">logout</a>
+					 
                     </div>
                   </li>
-                  <li class="inline-block relative">
-                    <a class="text-blueGray-500 block" href="#" onclick="openDropdown(event,'user-responsive-dropdown')"><div class="items-center flex">
-                        <span class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
-                            <img alt="..." class="w-full rounded-full align-middle border-none shadow-lg" src="{{ url_for('static', filename='img/eagle.jpg')}}"></span></div></a>
-                    <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1" style="min-width: 12rem;" id="user-responsive-dropdown">
-                      <a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Action</a><a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Another action</a><a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Something else here</a>
-                      <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
-                      <a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Seprated link</a>
-                    </div>
-                  </li>
+                 
                 </ul>
                 <div class="p-2 m-0 md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded hidden " id="example-collapse-sidebar">
                   <div class="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200">
@@ -239,19 +163,21 @@ lup[lup.length-1].click()
             <div id="dashboardsec"  class="h-full relative md:ml-64 bg-blueGray-50">
               <nav class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">
                 <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
-                  <a class="text-black text-sm uppercase hidden lg:inline-block font-semibold" href="./index.html">Dashboard</a>
+                  <a class="text-black text-sm uppercase hidden lg:inline-block font-semibold" href="#">Dashboard</a>
                  
                   <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
                     <a class="text-blueGray-500 block" href="#" onclick="openDropdown(event,'user-dropdown')">
+					
                       <div class="items-center flex">
-                        <span class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
-                            <img alt="..." class="w-full rounded-full align-middle border-none shadow-lg" src="{{ url_for('static', filename='img/eagle.jpg')}}"></span>
+                       
+						<span class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
+							<i class="fa fa-bars fa-2x"></i>	
+						</span>
                       </div>
                     </a>
                     <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1" style="min-width: 12rem;" id="user-dropdown">
-                      <a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Action</a><a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Another action</a><a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Something else here</a>
-                      <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
-                      <a href="#" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Seprated link</a>
+                      <a href="/admin/logout" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">logout</a>
+					  
                     </div>
                   </ul>
                 </div>

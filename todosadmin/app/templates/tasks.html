@@ -42,65 +42,21 @@
        }
 
      }
-
-
    x.addEventListener("click",toggle_display)
-
- //#################################################################################################
-
-
-
- //#################################################################################################
-// the functiosns below are for update form button operations
- //#################################################################################################
-//  var x = document.getElementById("item1")
-//   text=x.nextSibling.nextSibling.innerHTML;
-
-
-// elementsArray.forEach(function(elem) {
-//     elem.addEventListener("input", function() {
-//         //this function does stuff
-//     });
-// });
-
-
-
 var tasks_node=document.getElementsByClassName("tasks_tr")
-
-
-// function toggleModal(modalID){
-//                   document.getElementById(modalID).classList.toggle("hidden");
-//                   document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
-//                   document.getElementById(modalID).classList.toggle("flex");
-//                   document.getElementById(modalID + "-backdrop").classList.toggle("flex");
-//                 }
-
 for( let i=0;i<tasks_node.length; i++ ) {
        // console.log(tasks_node[i].children[5].children[2])
        //console.log(tasks_node[i].children[5].children[1].children[0].children[0].children[2].children[0])
         //##############################################################
         // edit button modal
         //################################################################
-       
         tasks_node[i].children[5].children[0].addEventListener('click',function () {
           tasks_node[i].children[5].children[1].classList.toggle("hidden");
           tasks_node[i].children[5].children[1].classList.toggle("flex");
           
           tasks_node[i].children[5].children[2].classList.toggle("hidden");
-          tasks_node[i].children[5].children[2].classList.toggle("flex");
-
-
-          
-
-          
-        })
-
-        
-
-         //#############################################################
-         
-        //  tasks_node[i].children[5].children[1].children[0]
-    
+          tasks_node[i].children[5].children[2].classList.toggle("flex");          
+        })  
         tasks_node[i].children[5].children[1].children[0].children[0].children[2].children[0].addEventListener("click", function(){
           tasks_node[i].children[5].children[1].classList.toggle("hidden");
           tasks_node[i].children[5].children[2].classList.toggle("hidden");
@@ -119,52 +75,19 @@ for( let i=0;i<tasks_node.length; i++ ) {
          tasks_node[i].children[6].children[1].submit()
 
         })
-        //###########################################################
-             
-          
-        //#############################################################
+    
     } 
 
- // #####################
-              // document.onkeydown = function(evt) {
-              //   for(let i=0;i<tasks_node.length; i++){
-              //                       evt = evt || window.event
-              //                       var isEscape = false
-              //                       if ("key" in evt) {
-              //                       isEscape = (evt.key === "Escape" || evt.key === "Esc")
-              //                             if (tasks_node[i].children[5].children[1].classList.contains('modal-active')){
-                                            
-              //                             }else{
-              //                               tasks_node[i].children[5].children[1].classList.add("hidden");
-              //                             tasks_node[i].children[5].children[2].classList.add("hidden");
-              //                             tasks_node[i].children[5].children[1].classList.add("flex");
-              //                             tasks_node[i].children[5].children[2].classList.add("flex");
-              //                               }
-              //                       } 
-              //                     };
-                  
 
-              //                   }
-    // ####################
- 
     document.getElementById("add_new_task").addEventListener("click",function(){
             console.log("it has run")
             document.getElementById("new_task").submit()
 
         })
 
-
- //#################################################################################################
-// the functiosns below are for update form button operations
- //#################################################################################################
-
-
-
-//#################################################################################################
-
     }
     );
-   
+ // serach list jquery function  
 $(document).ready(function(){
   $("#tb_search").on("keyup", function() {
     var value = $(this).val().toLowerCase();
